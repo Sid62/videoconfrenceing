@@ -1,0 +1,58 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+    <section id="room-name-wrapper">
+        <p>Room Name: <span id="room-name"></span></p>
+    </section>
+{% comment %} 
+    <section id="video-streams">
+        
+    </section> {% endcomment %}
+
+    <section id="controls-wrapper">
+        <div class="icon-wrapper">
+            <img class="control-icon" id="mic-btn" src="{% static 'images/microphone.svg' %}" />
+        </div>
+
+        <div class="icon-wrapper">
+            <img class="control-icon" id="camera-btn" src="{% static 'images/video.svg' %}" />
+        </div>
+
+        <div class="icon-wrapper">
+            <img class="control-icon" id="leave-btn" src="{% static 'images/leave.svg' %}" />
+        </div>
+    </section>
+</main>
+<script>
+    // This script is used for the page where you want to show only the current client's video
+
+// Access elements from the current page
+const doc = document;
+
+// Update the logic to control video visibility based on the current page
+let isCurrentPage = true;  // Set this variable based on your page logic
+
+if (isCurrentPage) {
+    const localVideoContainer = doc.getElementById('video-streams');
+    // Hide all other video containers except the local one
+    console.log("hjoerjpejrpe")
+    const remoteVideoContainers = document.querySelectorAll('.video-container');
+    remoteVideoContainers.forEach(container => {
+        if (container.id !== `user-container-${UID}`) {
+            container.style.display = 'none';
+        }
+    });
+}
+
+</script>
+
+<script type="text/javascript" src="{% static 'assets/AgoraRTC_N-4.8.1.js' %}"></script>
+{% comment %} <script type="text/javascript">
+    let UID = sessionStorage.getItem('UID');
+    let level = sessionStorage.getItem('level');
+</script> {% endcomment %}
+<script type="text/javascript" src="{% static 'assets/AgoraRTC_N-4.8.1.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/backup.js' %}" ></script>
+{% endblock content %}
