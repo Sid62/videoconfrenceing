@@ -9,5 +9,8 @@
             "src": "/(.*)",
             "dest": "mychat/wsgi.py"
         }
-    ]
+    ],
+    {
+        "cleanUrls": true
+    }
 }
